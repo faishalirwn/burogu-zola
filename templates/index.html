@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ config.title }}</title>
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
     <link rel="stylesheet" href="{{ config.base_url }}/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
@@ -16,21 +16,37 @@
                     <img src="temp-logo.png" alt="">
                 </a>
             </div>
-            <a class="menu" href="">Blog</a>
+            <div id="search-bar">
+                <input type="text" placeholder="🔎 Search">
+            </div>
             <a class="menu" href="">Works</a>
             <a class="menu" href="">About</a>
         </nav>
         <main>
+            {% block content %}
             <header>
-                <h1>Blog</h1>
+                <h1>My Blog</h1>
             </header>
-            <a class="blog-post" href="">
-                <img src="temp-poster.png" alt="">
-                <div class="blog-meta">
-                    <h2 class="blog-title">How to</h2>
-                    <p class="blog-date">11-12-19</p>
-                </div>
-            </a>
+            <div class="posts">
+                {% for page in paginator.pages %}
+                    <a class="blog-post" href="{{ page.permalink }}">
+                        <img src="temp-poster.png" alt="">
+                        <div class="blog-meta">
+                            <h2 class="blog-title">{{ page.title }}</h2>
+                            <p class="blog-date">{{ page.date }}</p>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+            <nav class="pagination">
+                {% if paginator.previous %}
+                    <a class="previous" href="{{ paginator.previous }}">‹ Previous</a>
+                {% endif %}
+                {% if paginator.next %}
+                    <a class="next" href="{{ paginator.next }}">Next ›</a>
+                {% endif %}
+            </nav>
+            {% endblock content %}
         </main>
 </body>
 </html>
