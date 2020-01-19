@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{{ config.title }}{% endblock title %}</title>
-    <link rel="stylesheet" href="{{ config.base_url }}/main.css">
+    <link rel="stylesheet" href="{{ get_url(path="main.css", trailing_slash=false) }}">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <nav id="nav-bar">
             <div class="logo">
-                <a href="{{ config.base_url }}">
-                    <img src="{{ config.base_url }}/temp-logo.png" alt="">
+                <a href="/">
+                    <img src="{{ get_url(path="temp-logo.png") }}" alt="">
                 </a>
             </div>
             <div id="search-bar">
@@ -27,20 +27,25 @@
             <header>
                 <h1>My Blog</h1>
             </header>
-            <div class="post-list">
-                {% for page in paginator.pages %}
-                    <a class="posts" href="{{ page.permalink }}">
-                        <img src="temp-poster.png" alt="">
-                        <div class="posts-meta">
-                            <h2 class="posts-title">{{ page.title }}</h2>
-                            <p class="posts-date">{{ page.date }}</p>
-                        </div>
-                    </a>
-                {% endfor %}
-            </div>
+            <!-- <div class="post-list"> -->
+            {% for page in paginator.pages %}
+                <a class="posts" href="{{ page.permalink }}">
+                    <img src="{{ config.base_url }}/{{ page.extra.cover }}" alt="Post cover image">
+                    <div class="posts-meta">
+                        <h2 class="posts-title">{{ page.title }}</h2>
+                        <p class="posts-date">{{ page.date }}</p>
+                    </div>
+                </a>
+            {% endfor %}
+            <!-- </div> -->
             <nav class="pagination">
                 {% if paginator.previous %}
                     <a class="previous" href="{{ paginator.previous }}">‹ Previous</a>
+                {% endif %}
+                {% if paginator.number_pagers > 1 %}
+                    {% for i in range(start=1, end=paginator.number_pagers) %}
+                        <a href="{{ paginator.base_url }}/{{ i }}" class="pager-number">{{ i }}</a>
+                    {% endfor %}
                 {% endif %}
                 {% if paginator.next %}
                     <a class="next" href="{{ paginator.next }}">Next ›</a>

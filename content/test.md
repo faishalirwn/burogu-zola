@@ -1,6 +1,10 @@
 +++
 title = "how to save yourself from"
 date = 2020-01-18
+[taxonomies]
+tags = ["testing", "testing2", "testing3"]
+[extra]
+cover = "post/temp-cover.png"
 +++
 Testing every `elements` you can find in [CommonMark](http://commonmark.org).
 <!-- more -->
