@@ -10,10 +10,10 @@
 </head>
 <body>
     <div class="container">
-        <nav>
+        <nav id="nav-bar">
             <div class="logo">
-                <a href="">
-                    <img src="temp-logo.png" alt="">
+                <a href="{{ config.base_url }}">
+                    <img src="{{ config.base_url }}/temp-logo.png" alt="">
                 </a>
             </div>
             <div id="search-bar">
@@ -27,13 +27,13 @@
             <header>
                 <h1>My Blog</h1>
             </header>
-            <div class="posts">
+            <div class="post-list">
                 {% for page in paginator.pages %}
-                    <a class="blog-post" href="{{ page.permalink }}">
+                    <a class="posts" href="{{ page.permalink }}">
                         <img src="temp-poster.png" alt="">
-                        <div class="blog-meta">
-                            <h2 class="blog-title">{{ page.title }}</h2>
-                            <p class="blog-date">{{ page.date }}</p>
+                        <div class="posts-meta">
+                            <h2 class="posts-title">{{ page.title }}</h2>
+                            <p class="posts-date">{{ page.date }}</p>
                         </div>
                     </a>
                 {% endfor %}
@@ -48,5 +48,9 @@
             </nav>
             {% endblock content %}
         </main>
+        <footer>
+            <p>😠 私は日本人を決して許しません 😠</p>
+        </footer>
+    </div> 
 </body>
 </html>

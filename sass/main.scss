@@ -5,15 +5,18 @@ html, body {
 }
 
 .container {
+    position: relative;
     max-width: 768px;
     margin: 0 auto;
+    min-height: 100vh;
 }
 
-nav {
+nav#nav-bar {
     padding-top: 20px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    margin-bottom: 60px;
 
     img {
         max-width: 50px;
@@ -43,8 +46,7 @@ nav {
 }
 
 main {
-    margin-top: 30px;
-
+    padding-bottom: 100px;
     header {
         padding-bottom: 20px;
         margin-bottom: 20px;
@@ -55,7 +57,7 @@ main {
     }
 }
 
-.blog-post {
+.posts {
     display: flex;
     text-decoration: none;
     align-items: center;
@@ -66,12 +68,12 @@ main {
         max-width: 50px;
     }
 
-    .blog-meta {
+    .posts-meta {
         margin-left: 15px;
 
-        .blog-date {
+        .posts-date {
             font-size: 14px;
-            color: rgba(#000000, 0.5);
+            color: rgba(#000000, 0.6);
         }
     }
 
@@ -82,4 +84,31 @@ main {
     &:hover {
         background-color: rgba(#000000, 0.025)
     }
+}
+
+// Post page
+
+article {
+    .post-meta {
+        margin-bottom: 20px;
+
+        h1 {
+            font-weight: bold;
+        }
+
+        p {
+            color: rgba(#000000, 0.6);
+        }
+    }
+}
+
+footer {
+    color: rgba(#000000, 0.9);
+    padding: 10px 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
