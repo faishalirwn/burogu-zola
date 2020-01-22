@@ -32,13 +32,16 @@
                 <a class="posts" href="{{ page.permalink }}">
                     <img src="{{ config.base_url }}/{{ page.extra.cover }}" alt="Post cover image">
                     <div class="posts-meta">
-                        <h2 class="posts-title">{{ page.title }}</h2>
-                        <p class="posts-date">{{ page.date }}</p>
+                        <p class="posts-title">{{ page.title }}</p>
+                        <p class="posts-date">Published on {{ page.date }}</p>
                     </div>
                 </a>
             {% endfor %}
             <!-- </div> -->
             <nav class="pagination">
+                {% if paginator.current_index != 1 %}
+                    <a href="{{ paginator.base_url }}/1" class="first"><<</a>
+                {% endif %}
                 {% if paginator.previous %}
                     <a class="previous" href="{{ paginator.previous }}">‹ Previous</a>
                 {% endif %}
@@ -49,6 +52,9 @@
                 {% endif %}
                 {% if paginator.next %}
                     <a class="next" href="{{ paginator.next }}">Next ›</a>
+                {% endif %}
+                {% if paginator.current_index != paginator.number_pagers %}
+                    <a href="{{ paginator.base_url }}/{{ paginator.number_pagers }}" class="last">>></a>
                 {% endif %}
             </nav>
             {% endblock content %}
