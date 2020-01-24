@@ -13,37 +13,43 @@
         <nav id="nav-bar">
             <div class="logo">
                 <a href="/">
-                    <img src="{{ get_url(path="temp-logo.png") }}" alt="">
+                    <img src="{{ get_url(path="logo.png") }}" alt="">
                 </a>
             </div>
             <div id="search-bar">
                 <input type="text" placeholder="🔎 Search">
             </div>
-            <a class="menu" href="">Works</a>
-            <a class="menu" href="">About</a>
+            <a href="">Works</a>
+            <a href="{{ config.base_url }}/about">About</a>
         </nav>
         <main>
             {% block content %}
             <header>
-                <h1>My Blog</h1>
+                <img src="{{ get_url(path="me.jpg") }}" alt="My picture">
+                <div class="blurb">
+                    <h1>Hi, I'm John Doe</h1>
+                    <p>A [REDACTED] from [REDACTED]. Welcome to my thought dumpster.</p>
+                </div>
+                <!-- <h1>My Blog</h1> -->
             </header>
-            <!-- <div class="post-list"> -->
-            {% for page in paginator.pages %}
-                <a class="posts" href="{{ page.permalink }}">
-                    <img src="{{ config.base_url }}/{{ page.extra.cover }}" alt="Post cover image">
-                    <div class="posts-meta">
-                        <p class="posts-title">{{ page.title }}</p>
-                        <p class="posts-date">Published on {{ page.date }}</p>
-                    </div>
-                </a>
-            {% endfor %}
-            <!-- </div> -->
-            <nav class="pagination">
+            <div class="posts">
+                <h2>Latest articles</h2>
+                {% for page in paginator.pages %}
+                    <a href="{{ page.permalink }}">
+                        <img src="{{ config.base_url }}/{{ page.extra.cover }}" alt="Post cover image">
+                        <div class="posts-meta">
+                            <p class="posts-title">{{ page.title }}</p>
+                            <p class="posts-date">Published on {{ page.date }}</p>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+            <nav class="paginator">
                 {% if paginator.current_index != 1 %}
                     <a href="{{ paginator.base_url }}/1" class="first"><<</a>
                 {% endif %}
                 {% if paginator.previous %}
-                    <a class="previous" href="{{ paginator.previous }}">‹ Previous</a>
+                    <a class="previous" href="{{ paginator.previous }}">< Previous</a>
                 {% endif %}
                 {% if paginator.number_pagers > 1 %}
                     {% for i in range(start=1, end=paginator.number_pagers) %}
@@ -51,7 +57,7 @@
                     {% endfor %}
                 {% endif %}
                 {% if paginator.next %}
-                    <a class="next" href="{{ paginator.next }}">Next ›</a>
+                    <a class="next" href="{{ paginator.next }}">Next ></a>
                 {% endif %}
                 {% if paginator.current_index != paginator.number_pagers %}
                     <a href="{{ paginator.base_url }}/{{ paginator.number_pagers }}" class="last">>></a>

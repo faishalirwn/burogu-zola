@@ -3,5 +3,15 @@
 {% block title %}{{ taxonomy.name }} - {{ config.title }}{% endblock title %}
 
 {% block content %}
-<p>hi</p>
+<div class="tag-list">
+    <h1>Tags</h1>
+    <ul>
+        {% for term in terms %}
+            <li>
+                <a href="{{ term.permalink }}">{{ term.name }} ({{ term.pages | length }})</a>
+            </li>            
+        {% endfor %}
+    </ul>
+    
+</div>
 {% endblock content %}
