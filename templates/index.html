@@ -19,7 +19,7 @@
             <div id="search-bar">
                 <input type="text" placeholder="🔎 Search">
             </div>
-            <a href="">Works</a>
+            <a href="{{ config.base_url }}/showcase">Showcase</a>
             <a href="{{ config.base_url }}/about">About</a>
         </nav>
         <main>
@@ -27,13 +27,13 @@
             <header>
                 <img src="{{ get_url(path="me.jpg") }}" alt="My picture">
                 <div class="blurb">
-                    <h1>Hi, I'm John Doe</h1>
+                    <h1 class="header">Hi, I'm John Doe</h1>
                     <p>A [REDACTED] from [REDACTED]. Welcome to my thought dumpster.</p>
                 </div>
                 <!-- <h1>My Blog</h1> -->
             </header>
             <div class="posts">
-                <h2>Latest articles</h2>
+                <h2 class="header">Latest articles</h2>
                 {% for page in paginator.pages %}
                     <a href="{{ page.permalink }}">
                         <img src="{{ config.base_url }}/{{ page.extra.cover }}" alt="Post cover image">

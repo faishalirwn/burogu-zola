@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+
+{% block title %}{{ page.title }} - {{ config.title }}{% endblock title %}
+
+{% block content %}
+<h1 class="header">Showcase</h1>
+<div id="showcase">
+    {% for item in page.extra.items %}
+        <div class="showcase-item">
+            <img src="{{ config.base_url }}/{{ item.cover }}" alt="{{ item.name }} image">
+            <a href="{{ item.permalink }}">
+                <h2>{{ item.name }}</h2>
+            </a>
+            <h3>{{ item.desc }}</h3>
+        </div>
+    {% endfor %}
+</div>
+{% endblock content %}
