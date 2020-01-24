@@ -1,8 +1,10 @@
 # The URL the site will be built for
 base_url = "https://example.com"
 
-title = "KEKW"
-description = "Epstein didn't kill himself"
+title = "Site Title"
+description = "I am therefore am I"
+
+default_language = "en"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
@@ -19,4 +21,4 @@ taxonomies = [
 ]
 
 [extra]
-# Put all your custom variables here
+menus = ["showcase", "about"]

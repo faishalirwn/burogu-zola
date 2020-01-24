@@ -16,11 +16,14 @@
                     <img src="{{ get_url(path="logo.png") }}" alt="">
                 </a>
             </div>
-            <div id="search-bar">
-                <input type="text" placeholder="🔎 Search">
-            </div>
-            <a href="{{ config.base_url }}/showcase">Showcase</a>
-            <a href="{{ config.base_url }}/about">About</a>
+            {% if config.build_search_index %}
+                <div id="search-bar">
+                    <input type="text" placeholder="🔎 Search">
+                </div>
+            {% endif %}
+            {% for menu in config.extra.menus %}
+                <a href="{{ config.base_url }}/{{ menu }}">{{ menu | capitalize }}</a>
+            {% endfor %}
         </nav>
         <main>
             {% block content %}
