@@ -49,25 +49,43 @@
                     </a>
                 {% endfor %}
             </div>
+            {% if paginator.number_pagers > 1 %}
             <nav class="paginator">
-                {% if paginator.current_index != 1 %}
+                <!-- {% if paginator.current_index != 1 %}
                     <a href="{{ paginator.base_url }}/1" class="first"><<</a>
-                {% endif %}
+                {% endif %} -->
                 {% if paginator.previous %}
-                    <a class="previous" href="{{ paginator.previous }}">< Previous</a>
+                    <a class="previous" href="{{ paginator.previous }}">Newer</a>
                 {% endif %}
-                {% if paginator.number_pagers > 1 %}
-                    {% for i in range(start=1, end=paginator.number_pagers) %}
+
+                {% if  paginator.current_index - 2 < 1 %}
+                    {% set starting = 2 %}
+                {% else %}
+                    {% set starting = paginator.current_index - 2 %}
+                {% endif %}
+                
+                <!-- {% set ending = paginator.current_index + 3 %} -->
+                <a href="{{ paginator.base_url }}/1" class="pager-number">1</a>
+                {% for i in range(start=starting, end=paginator.current_index + 3) %}
+                    {% if i > 1 and i < paginator.number_pagers %}
+                        {% if i != paginator.current_index - 2 and i != paginator.current_index + 2 and i > 1 and i < paginator.number_pagers %}
                         <a href="{{ paginator.base_url }}/{{ i }}" class="pager-number">{{ i }}</a>
-                    {% endfor %}
-                {% endif %}
+                        {% elif i == paginator.current_index - 2 and i > 1 %}
+                        <span>...</span>
+                        {% elif i == paginator.current_index + 2 and i < paginator.number_pagers %}
+                        <span>...</span>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                <a href="{{ paginator.base_url }}/{{ paginator.number_pagers }}" class="pager-number">{{ paginator.number_pagers }}</a>
                 {% if paginator.next %}
-                    <a class="next" href="{{ paginator.next }}">Next ></a>
+                    <a class="next" href="{{ paginator.next }}">Older</a>
                 {% endif %}
-                {% if paginator.current_index != paginator.number_pagers %}
+                <!-- {% if paginator.current_index != paginator.number_pagers %}
                     <a href="{{ paginator.base_url }}/{{ paginator.number_pagers }}" class="last">>></a>
-                {% endif %}
+                {% endif %} -->
             </nav>
+            {% endif %}
             {% endblock content %}
         </main>
         <footer>

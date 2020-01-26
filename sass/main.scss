@@ -2,6 +2,8 @@
 @import 'blog-small';
 
 %link-color-inherit {
+    color: inherit;
+
     &:visited {
         color: inherit;
     }
@@ -45,7 +47,6 @@ nav#nav-bar {
 
     a:not(:first-child) {
         margin-left: 30px;
-        color: rgba(#000000, 0.9);
         text-decoration: none;
         @extend %link-color-inherit
     }
@@ -129,10 +130,11 @@ nav.paginator {
     margin-top: 50px;
     display: flex;
     justify-content: center;
+    align-items: center;
 
     a {
+        // max-height: 2.5em;
         background-color: rgba(#000000, 0.1);
-        // color: rgba(#000000, 0.9);
         border-radius: 5px;
         text-decoration: none;
         padding: 10px;
