@@ -11,8 +11,8 @@
     {% endblock head %}
 </head>
 <body>
-    <div class="container">
-        <nav id="nav-bar">
+    <nav id="nav-bar">
+        <div class="kontener">
             <div class="logo">
                 <a href="/">
                     <img src="{{ get_url(path="logo.png") }}" alt="">
@@ -26,7 +26,9 @@
             {% for menu in config.extra.menus %}
                 <a href="{{ config.base_url }}/{{ menu }}">{{ menu | capitalize }}</a>
             {% endfor %}
-        </nav>
+        </div>
+    </nav>
+    <div class="container">
         <main>
             {% block content %}
             <header>
@@ -64,12 +66,20 @@
                     {% set starting = paginator.current_index - 2 %}
                 {% endif %}
                 
-                <!-- {% set ending = paginator.current_index + 3 %} -->
-                <a href="{{ paginator.base_url }}/1" class="pager-number">1</a>
+                {% if paginator.current_index == 1 %}
+                <a href="{{ paginator.base_url }}1" class="current-index pager-number">1</a>
+                {% else %}
+                <a href="{{ paginator.base_url }}1" class="pager-number">1</a>
+                {% endif %}
+                
                 {% for i in range(start=starting, end=paginator.current_index + 3) %}
                     {% if i > 1 and i < paginator.number_pagers %}
                         {% if i != paginator.current_index - 2 and i != paginator.current_index + 2 and i > 1 and i < paginator.number_pagers %}
-                        <a href="{{ paginator.base_url }}/{{ i }}" class="pager-number">{{ i }}</a>
+                            {% if i == paginator.current_index %}
+                            <a href="{{ paginator.base_url }}{{ i }}" class="current-index pager-number">{{ i }}</a>
+                            {% else %}
+                            <a href="{{ paginator.base_url }}{{ i }}" class="pager-number">{{ i }}</a>
+                            {% endif %}
                         {% elif i == paginator.current_index - 2 and i > 1 %}
                         <span>...</span>
                         {% elif i == paginator.current_index + 2 and i < paginator.number_pagers %}
@@ -77,7 +87,12 @@
                         {% endif %}
                     {% endif %}
                 {% endfor %}
-                <a href="{{ paginator.base_url }}/{{ paginator.number_pagers }}" class="pager-number">{{ paginator.number_pagers }}</a>
+                {% if paginator.current_index == paginator.number_pagers %}
+                <a href="{{ paginator.base_url }}{{ paginator.number_pagers }}" class="current-index pager-number">{{ paginator.number_pagers }}</a>
+                {% else %}
+                <a href="{{ paginator.base_url }}{{ paginator.number_pagers }}" class="pager-number">{{ paginator.number_pagers }}</a>
+                {% endif %}
+                
                 {% if paginator.next %}
                     <a class="next" href="{{ paginator.next }}">Older</a>
                 {% endif %}
@@ -89,7 +104,15 @@
             {% endblock content %}
         </main>
         <footer>
-            <p>😠 私は日本人を決して許しません 😠</p>
+            <p>Built with <a href="https://www.getzola.org/">Zola</a></p>
+            <div class="social-links">
+                <a href="https://github.com/faishalirwn/">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+                <a href="https://www.instagram.com/faishalirwn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+            </div>
         </footer>
     </div>
     {% block footer %}

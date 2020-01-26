@@ -6,9 +6,10 @@
 <article>
     <div class="post-meta">
         <h1 class="bold-header">{{ page.title }}</h1>
-        <p>{{ page.date }} | </p>
+        <p>{{ page.date }}</p>
         {% if page.taxonomies.tags %}
             <div class="post-tags">
+                <span>|</span>
                 {% for tag in page.taxonomies.tags %}
                     <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}">#{{ tag }}</a>
                 {% endfor %}
