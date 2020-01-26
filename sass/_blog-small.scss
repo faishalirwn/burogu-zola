@@ -1,0 +1,19 @@
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 425px) {
+    header {
+        flex-direction: column;
+
+        img {
+            margin-bottom: 20px;
+        }
+
+        .blurb {
+            text-align: center;
+        }
+    }
+}

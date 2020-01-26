@@ -1,4 +1,5 @@
 @import 'reset';
+@import 'blog-small';
 
 %link-color-inherit {
     &:visited {
@@ -10,14 +11,15 @@
     }
 }
 
-.header {
-    font-weight: bold;
-}
-
 html, body {
     font-family: "Roboto", Helvetica, Arial, sans-serif;
     color: rgba(#000000, 0.9);
 }
+
+.bold-header {
+    font-weight: bold;
+}
+
 
 .container {
     position: relative;
@@ -41,9 +43,9 @@ nav#nav-bar {
         flex-grow: 2;
     }
 
-    a {
+    a:not(:first-child) {
         margin-left: 30px;
-        // color: rgba(#000000, 0.9);
+        color: rgba(#000000, 0.9);
         text-decoration: none;
         @extend %link-color-inherit
     }
@@ -67,10 +69,12 @@ main {
         display: flex;
         padding-bottom: 20px;
         margin-bottom: 20px;
+        align-items: center;
         // border-bottom: 1px solid rgba(#000000, 0.1);
 
         img {
             max-width: 100px;
+            max-height: 100px;
             border-radius: 50%;
             margin-right: 30px;
         }

@@ -7,6 +7,8 @@
     <title>{% block title %}{{ config.title }}{% endblock title %}</title>
     <link rel="stylesheet" href="{{ get_url(path="main.css", trailing_slash=false) }}">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    {% block head %}
+    {% endblock head %}
 </head>
 <body>
     <div class="container">
@@ -16,11 +18,11 @@
                     <img src="{{ get_url(path="logo.png") }}" alt="">
                 </a>
             </div>
-            {% if config.build_search_index %}
+            <!-- {% if config.build_search_index %}
                 <div id="search-bar">
                     <input type="text" placeholder="🔎 Search">
                 </div>
-            {% endif %}
+            {% endif %} -->
             {% for menu in config.extra.menus %}
                 <a href="{{ config.base_url }}/{{ menu }}">{{ menu | capitalize }}</a>
             {% endfor %}
@@ -30,13 +32,13 @@
             <header>
                 <img src="{{ get_url(path="me.jpg") }}" alt="My picture">
                 <div class="blurb">
-                    <h1 class="header">Hi, I'm John Doe</h1>
+                    <h1 class="bold-header">Hi, I'm John Doe</h1>
                     <p>A [REDACTED] from [REDACTED]. Welcome to my thought dumpster.</p>
                 </div>
                 <!-- <h1>My Blog</h1> -->
             </header>
             <div class="posts">
-                <h2 class="header">Latest articles</h2>
+                <h2 class="bold-header">Latest articles</h2>
                 {% for page in paginator.pages %}
                     <a href="{{ page.permalink }}">
                         <img src="{{ config.base_url }}/{{ page.extra.cover }}" alt="Post cover image">
@@ -71,6 +73,8 @@
         <footer>
             <p>😠 私は日本人を決して許しません 😠</p>
         </footer>
-    </div> 
+    </div>
+    {% block footer %}
+    {% endblock footer %}
 </body>
 </html>
