@@ -1,0 +1,19 @@
+%link-color-inherit {
+    color: inherit;
+
+    &:visited {
+        color: inherit;
+    }
+
+    &:active {
+        color: inherit;
+    }
+}
+
+.none {
+    display: none;
+}
+
+.bold-header {
+    font-weight: bold;
+}

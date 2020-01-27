@@ -30,6 +30,10 @@ nav#nav-bar {
         margin-left: 30px;
         cursor: pointer;
     }
+
+    svg {
+        fill: currentColor;
+    }
 }
 
 #search-bar {
