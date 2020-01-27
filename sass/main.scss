@@ -1,4 +1,6 @@
 @import 'reset';
+@import 'variable';
+@import 'navbar';
 @import 'blog-small';
 
 %link-color-inherit {
@@ -13,9 +15,18 @@
     }
 }
 
-html, body {
+body {
     font-family: "Roboto", Helvetica, Arial, sans-serif;
-    color: rgba(#000000, 0.9);
+    color: $light-primary-color;
+    
+    &.dark-theme {
+        background-color: $dark-background-color;
+        color: $dark-primary-color;
+    }
+}
+
+.none {
+    display: none;
 }
 
 .bold-header {
@@ -30,47 +41,6 @@ html, body {
     min-height: 100vh;
 }
 
-.kontener {
-    max-width: 768px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin: 0 auto;
-}
-
-nav#nav-bar {
-    padding: 10px 0;
-    margin-bottom: 40px;
-    box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 0 3px rgba(0,0,0,.08);
-
-
-    img {
-        max-width: 50px;
-    }
-
-    .logo {
-        flex-grow: 2;
-    }
-
-    a:not(:first-child) {
-        margin-left: 30px;
-        text-decoration: none;
-        @extend %link-color-inherit
-    }
-}
-
-#search-bar {
-    display: flex;
-    border-radius: 5px;
-
-    input {
-        border: 1px solid rgba(#000000, 0.35);
-        border-radius: 5px;
-        font-size: 16px;
-        padding: 5px;
-    }
-}
-
 main {
     padding-bottom: 100px;
     header {
@@ -78,7 +48,6 @@ main {
         padding-bottom: 20px;
         margin-bottom: 20px;
         align-items: center;
-        // border-bottom: 1px solid rgba(#000000, 0.1);
 
         img {
             max-width: 100px;
@@ -95,7 +64,6 @@ main {
     }
 }
 
-
 .posts {
     h2 {
         margin-bottom: 20px;
@@ -104,9 +72,9 @@ main {
         display: flex;
         text-decoration: none;
         align-items: center;
-        padding: 20px 0 20px 5px;
+        padding: 20px 0 20px 10px;
         border-radius: 5px;
-        border-bottom: 1px solid rgba(#000000, 0.1);
+        border-bottom: 1px solid $light-light-color;
         
         img {
             max-width: 50px;
@@ -117,17 +85,33 @@ main {
             
             .posts-title {
                 font-size: 22px;
-                color: rgba(#000000, 0.9);
+                color: $light-primary-color;
+
+                .dark-theme & {
+                    color: $dark-primary-color;
+                }
             }
 
             .posts-date {
                 font-size: 14px;
-                color: rgba(#000000, 0.6);
+                color: $light-accent-color;
+
+                .dark-theme & {
+                    color: $dark-accent-color;
+                }
             }
         }
 
         &:hover {
-            background-color: rgba(#000000, 0.025)
+            background-color: $light-verylight-color;
+
+            .dark-theme & {
+                background-color: $dark-light-color;
+            }
+        }
+
+        .dark-theme & {
+            border-bottom: 1px solid $dark-light-color;
         }
     }
         
@@ -141,7 +125,6 @@ nav.paginator {
 
     a {
         text-align: center;
-        // background-color: rgba(#000000, 0.1);
         text-decoration: none;
         padding: 10px;
         margin: 0 5px;
@@ -151,9 +134,11 @@ nav.paginator {
     }
 
     .current-index {
-        border-bottom: 2px solid rgba(#000000, 0.9);
-        // background-color: rgba(#000000, 0.8);
-        // color: white;
+        border-bottom: 2px solid $light-primary-color;
+
+        .dark-theme & {
+            border-bottom: 2px solid $dark-primary-color;
+        }
     }
 }
 
@@ -178,7 +163,11 @@ footer {
             margin-left: 10px;
             max-width: 28px;
             max-height: 28px;
-            color: rgba(#000000, 0.8);
+            color: $light-accent-color;
+
+            .dark-theme & {
+                color: $dark-accent-color;
+            }
         }
     }
 }
@@ -187,14 +176,22 @@ footer {
 
 article {
     .post-meta {
-        margin-bottom: 20px;
+        margin-bottom: 40px;
+
+        h1 {
+            margin-bottom: 10px;
+        }
 
         p, .post-tags {
             display: inline-block;
         }
 
         p {
-            color: rgba(#000000, 0.6);
+            color: $light-accent-color;
+
+            .dark-theme & {
+                color: $dark-accent-color;
+            }
         }
     }
 
