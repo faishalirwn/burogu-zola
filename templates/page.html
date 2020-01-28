@@ -5,16 +5,19 @@
 {% block content %}
 <article>
     <div class="post-meta">
-        <h1 class="bold-header">{{ page.title }}</h1>
-        <p>{{ page.date }}</p>
-        {% if page.taxonomies.tags %}
-            <div class="post-tags">
-                <span>|</span>
-                {% for tag in page.taxonomies.tags %}
-                    <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}">#{{ tag }}</a>
-                {% endfor %}
-            </div>
-        {% endif %}
+        <img src="{{ get_url(path=page.extra.cover) }}" alt="Article cover image">
+        <div class="post-meta-text">
+            <h1 class="bold-header">{{ page.title }}</h1>
+            <p>{{ page.date }}</p>
+            {% if page.taxonomies.tags %}
+                <div class="post-tags">
+                    <span>|</span>
+                    {% for tag in page.taxonomies.tags %}
+                        <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}">#{{ tag }}</a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
     </div>
     {{ page.content | safe }}
 </article>

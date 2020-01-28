@@ -1,4 +1,4 @@
-.kontener {
+.nav-bar-container {
     max-width: 768px;
     display: flex;
     align-items: center;
@@ -23,7 +23,11 @@ nav#nav-bar {
     a:not(:first-child) {
         margin-left: 30px;
         text-decoration: none;
-        @extend %link-color-inherit
+        @extend %link-color-inherit;
+
+        &:hover {
+            color: $light-accent-color;
+        }
     }
 
     .theme-toggle {

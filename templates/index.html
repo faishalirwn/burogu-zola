@@ -13,7 +13,7 @@
 </head>
 <body>
     <nav id="nav-bar">
-        <div class="kontener">
+        <div class="nav-bar-container">
             <div class="logo">
                 <a href="/">
                     <img src="{{ get_url(path="logo.png") }}" alt="">
@@ -48,7 +48,7 @@
                 <h2 class="bold-header">Latest articles</h2>
                 {% for page in paginator.pages %}
                     <a href="{{ page.permalink }}">
-                        <img src="{{ config.base_url }}/{{ page.extra.cover }}" alt="Post cover image">
+                        <img src="{{ get_url(path=page.extra.cover) }}" alt="Post cover image">
                         <div class="posts-meta">
                             <p class="posts-title">{{ page.title }}</p>
                             <p class="posts-date">Published on {{ page.date }}</p>
