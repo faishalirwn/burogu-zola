@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://example.com"
+base_url = "https://dreamy-kilby-1f72a3.netlify.com/"
 
 title = "Faishal Irawan - Informatics Student"
 description = "I'm an Informatics Student from Indonesia."
