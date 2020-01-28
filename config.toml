@@ -1,8 +1,8 @@
 # The URL the site will be built for
 base_url = "https://example.com"
 
-title = "Site Title"
-description = "I am therefore am I"
+title = "Faishal Irawan - Informatics Student"
+description = "I'm an Informatics Student from Indonesia."
 
 default_language = "en"
 
@@ -22,3 +22,5 @@ taxonomies = [
 
 [extra]
 menus = ["showcase", "about"]
+blurb_title = "Hi, I'm Faishal Irawan"
+blurb_desc = "A [REDACTED] from [REDACTED]. Welcome to my thought dumpster."

@@ -14,6 +14,10 @@ nav#nav-bar {
 
     img {
         max-width: 50px;
+
+        .dark-theme & {
+            filter: invert(1);
+        }
     }
 
     .logo {
@@ -27,6 +31,10 @@ nav#nav-bar {
 
         &:hover {
             color: $light-accent-color;
+
+            .dark-theme & {
+                color: $dark-accent-color;;
+            }
         }
     }
 

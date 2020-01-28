@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="{{ get_url(path="main.css", trailing_slash=false) }}">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <script type="text/javascript" src="{{ get_url(path="main.js") }}" async></script>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#ffffff">    
     {% block head %}
     {% endblock head %}
 </head>
@@ -39,8 +43,8 @@
             <header>
                 <img src="{{ get_url(path="me.jpg") }}" alt="My picture">
                 <div class="blurb">
-                    <h1 class="bold-header">Hi, I'm John Doe</h1>
-                    <p>A [REDACTED] from [REDACTED]. Welcome to my thought dumpster.</p>
+                    <h1 class="bold-header">{{ config.extra.blurb_title }}</h1>
+                    <p>{{ config.extra.blurb_desc }}</p>
                 </div>
                 <!-- <h1>My Blog</h1> -->
             </header>

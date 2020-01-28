@@ -1,4 +1,5 @@
 article {
+    margin-bottom: 100px;
     .post-meta {
         margin-bottom: 40px;
         display: flex;
@@ -24,9 +25,11 @@ article {
                 color: $dark-accent-color;
             }
         }
+    }
 
-        a {
-            @extend %link-color-inherit
+    a {
+        .dark-theme & {
+            color: darkturquoise;
         }
     }
 
