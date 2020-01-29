@@ -4,11 +4,6 @@ path = "about"
 template = "about.html"
 +++
 
-# I'm the one who
-## I'm the one who
-### I'm the one who
-#### I'm the one who
-##### I'm the one who
-###### Made this
+## Hi there
 
-
+My name is Faishal, people call me Isal, I’m from Indonesia. I am a college student majoring Informatics at Telkom University.
