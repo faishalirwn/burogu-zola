@@ -107,10 +107,6 @@ main {
                 background-color: $dark-light-color;
             }
         }
-
-        .dark-theme & {
-            border-bottom: 1px solid $dark-light-color;
-        }
     }
         
 }
