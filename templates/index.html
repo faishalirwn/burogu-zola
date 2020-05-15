@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +9,14 @@
     <link rel="stylesheet" href="{{ get_url(path="main.css", trailing_slash=false) }}">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <script type="text/javascript" src="{{ get_url(path="main.js") }}" async></script>
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <meta name="theme-color" content="#ffffff">    
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <meta name="theme-color" content="#ffffff">
     {% block head %}
     {% endblock head %}
 </head>
+
 <body>
     <nav id="nav-bar">
         <div class="nav-bar-container">
@@ -23,18 +25,29 @@
                     <img src="{{ get_url(path="logo.png") }}" alt="">
                 </a>
             </div>
-            <!-- {% if config.build_search_index %}
-                <div id="search-bar">
-                    <input type="text" placeholder="🔎 Search">
-                </div>
-            {% endif %} -->
             {% for menu in config.extra.menus %}
-                <a href="{{ config.base_url }}/{{ menu }}">{{ menu | capitalize }}</a>
+            <a href="{{ config.base_url }}{{ menu }}">{{ menu | capitalize }}</a>
             {% endfor %}
             <div class="theme-toggle">
-                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                <svg id="sun" class="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-            </div>            
+                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-moon">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <svg id="sun" class="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-sun">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </div>
         </div>
     </nav>
     <div class="container">
@@ -50,76 +63,38 @@
             </header>
             <div class="posts">
                 <h2 class="bold-header">Latest articles</h2>
-                {% for page in paginator.pages %}
-                    <a href="{{ page.permalink }}">
-                        <img src="{{ get_url(path=page.extra.cover) }}" alt="Post cover image">
-                        <div class="posts-meta">
-                            <p class="posts-title">{{ page.title }}</p>
-                            <p class="posts-date">Published on {{ page.date }}</p>
-                        </div>
-                    </a>
-                {% endfor %}
+                <!-- {% for page in section.pages %}
+                <a href="{{ page.permalink }}">
+                    <img src="{{ get_url(path=page.extra.cover) }}" alt="Post cover image">
+                    <div class="posts-meta">
+                        <p class="posts-title">{{ page.title }}</p>
+                        <p class="posts-date">Published on {{ page.date }}</p>
+                    </div>
+                </a>
+                {% endfor %} -->
             </div>
-            {% if paginator.number_pagers > 1 %}
-            <nav class="paginator">
-                <!-- {% if paginator.current_index != 1 %}
-                    <a href="{{ paginator.base_url }}/1" class="first"><<</a>
-                {% endif %} -->
-                {% if paginator.previous %}
-                    <a class="previous" href="{{ paginator.previous }}">Newer</a>
-                {% endif %}
-
-                {% if  paginator.current_index - 2 < 1 %}
-                    {% set starting = 2 %}
-                {% else %}
-                    {% set starting = paginator.current_index - 2 %}
-                {% endif %}
-                
-                {% if paginator.current_index == 1 %}
-                <a href="{{ paginator.base_url }}1" class="current-index pager-number">1</a>
-                {% else %}
-                <a href="{{ paginator.base_url }}1" class="pager-number">1</a>
-                {% endif %}
-                
-                {% for i in range(start=starting, end=paginator.current_index + 3) %}
-                    {% if i > 1 and i < paginator.number_pagers %}
-                        {% if i != paginator.current_index - 2 and i != paginator.current_index + 2 and i > 1 and i < paginator.number_pagers %}
-                            {% if i == paginator.current_index %}
-                            <a href="{{ paginator.base_url }}{{ i }}" class="current-index pager-number">{{ i }}</a>
-                            {% else %}
-                            <a href="{{ paginator.base_url }}{{ i }}" class="pager-number">{{ i }}</a>
-                            {% endif %}
-                        {% elif i == paginator.current_index - 2 and i > 1 %}
-                        <span>...</span>
-                        {% elif i == paginator.current_index + 2 and i < paginator.number_pagers %}
-                        <span>...</span>
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}
-                {% if paginator.current_index == paginator.number_pagers %}
-                <a href="{{ paginator.base_url }}{{ paginator.number_pagers }}" class="current-index pager-number">{{ paginator.number_pagers }}</a>
-                {% else %}
-                <a href="{{ paginator.base_url }}{{ paginator.number_pagers }}" class="pager-number">{{ paginator.number_pagers }}</a>
-                {% endif %}
-                
-                {% if paginator.next %}
-                    <a class="next" href="{{ paginator.next }}">Older</a>
-                {% endif %}
-                <!-- {% if paginator.current_index != paginator.number_pagers %}
-                    <a href="{{ paginator.base_url }}/{{ paginator.number_pagers }}" class="last">>></a>
-                {% endif %} -->
-            </nav>
-            {% endif %}
             {% endblock content %}
         </main>
         <footer>
             <p>Built with <a href="https://www.getzola.org/">Zola</a></p>
             <div class="social-links">
                 <a href="https://github.com/faishalirwn/">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-github">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg>
                 </a>
                 <a href="https://www.instagram.com/faishalirwn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-instagram">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
                 </a>
             </div>
         </footer>
@@ -127,4 +102,5 @@
     {% block footer %}
     {% endblock footer %}
 </body>
+
 </html>

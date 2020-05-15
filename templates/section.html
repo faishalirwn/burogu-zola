@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+
+{% block title %}{{ section.title }} - {{ config.title}}{% endblock title %}
+
+{% block content %}
+
+<div class="posts">
+    <h2 class="bold-header">Articles</h2>
+    {% for page in section.pages %}
+    <a href="{{ page.permalink }}">
+        <img src="{{ get_url(path=page.extra.cover) }}" alt="Post cover image">
+        <div class="posts-meta">
+            <p class="posts-title">{{ page.title }}</p>
+            <p class="posts-date">Published on {{ page.date }}</p>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock content %}
