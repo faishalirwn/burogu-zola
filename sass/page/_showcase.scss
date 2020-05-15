@@ -2,8 +2,9 @@
 #showcase { 
     margin-top: 30px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
 
     .showcase-item {
         display: flex;
@@ -12,6 +13,7 @@
         text-align: center;
         margin-bottom: 50px;
         border-radius: 5px;
+        max-width: 40%;
 
         img {
             border-radius: 5px;
@@ -19,6 +21,7 @@
         }
 
         a {
+            text-decoration: underline;
             @extend %link-color-inherit;
             margin-bottom: 10px;
         }

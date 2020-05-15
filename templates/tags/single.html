@@ -6,13 +6,13 @@
 <h1 class="bold-header page-title">Tag: {{ term.name }}</h1>
 <div class="posts">
     {% for page in term.pages %}
-        <a href="{{ page.permalink }}">
-            <img src="{{ config.base_url }}/{{ page.extra.cover }}" alt="Post cover image">
-            <div class="posts-meta">
-                <p class="posts-title">{{ page.title }}</p>
-                <p class="posts-date">Published on {{ page.date }}</p>
-            </div>
-        </a>
+    <a class="post" href="{{ page.permalink }}">
+        <img src="{{ config.base_url }}/{{ page.extra.cover }}" alt="Post cover image">
+        <div class="post-meta">
+            <p class="post-title">{{ page.title }}</p>
+            <p class="post-date">Published on {{ page.date }}</p>
+        </div>
+    </a>
     {% endfor %}
 </div>
 {% endblock content %}

@@ -21,6 +21,6 @@ taxonomies = [
 ]
 
 [extra]
-menus = ["blog", "showcase", "about"]
+menus = ["article", "showcase", "about"]
 blurb_title = "Hi, I'm Faishal Irawan"
 blurb_desc = "CS student. Bandung, Indonesia. ようこそ."
