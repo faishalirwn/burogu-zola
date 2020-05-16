@@ -50,21 +50,6 @@ main {
         display: inline-block;
     }
 
-    a {
-        padding: 10px;
-        border-radius: 13%;
-        color: $light-accent-color;
-        @extend %link-color-inherit;
-
-        &:hover {
-            background-color: $light-verylight-color;
-
-            .dark-theme & {
-                background-color: $dark-verylight-color;;
-            }
-        }
-    }
-
     .post {
         display: flex;
         text-decoration: none;
@@ -114,12 +99,24 @@ main {
 .latest-posts {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
 
     .post {
         min-width: 50%;
         max-width: 50%;
+    }
+}
+
+.more-btn {
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 10%;
+    @extend %link-color-inherit;
+    background-color: $light-verylight-color;
+    
+    .dark-theme & {
+        background-color: rgba(119, 119, 119, 0.2);
     }
 }
 

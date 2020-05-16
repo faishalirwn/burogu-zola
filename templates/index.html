@@ -59,15 +59,15 @@
                     <h1 class="bold-header">{{ config.extra.blurb_title }}</h1>
                     <p>{{ config.extra.blurb_desc }}</p>
                 </div>
-                <!-- <h1>My Blog</h1> -->
             </header>
             <div class="posts">
                 {% set article_section = get_section(path="article/_index.md") %}
                 {% set article_pages = article_section.pages %}
                 <h2 class="bold-header">Latest articles</h2>
-                <a href="{{ article_section.path }}">All articles ></a>
+                <a class="more-btn" href="{{ article_section.path }}">All articles ></a>
                 <div class="latest-posts">
                     {% for i in range(end=4) %}
+                    {% if article_pages[i] %}
                     <a class="post" href="{{ article_pages[i].permalink }}">
                         <img src="{{ get_url(path=article_pages[i].extra.cover) }}" alt="Post cover image">
                         <div class="post-meta">
@@ -75,6 +75,7 @@
                             <p class="post-date">{{ article_pages[i].date }}</p>
                         </div>
                     </a>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
